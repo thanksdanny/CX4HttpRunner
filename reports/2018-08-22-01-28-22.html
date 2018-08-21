@@ -1,0 +1,412 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary, #details {
+      width: 960px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    #details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    #details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    #details .success {
+      background-color: greenyellow;
+    }
+    #details .error {
+      background-color: red;
+    }
+    #details .failure {
+      background-color: salmon;
+    }
+    #details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      width: 50%;
+      position: relative;
+      transition: all 3s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 80%;
+      overflow: auto;
+      text-align: left;
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: </h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2018-08-22 01:28:22</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">0.235 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 1.3.11 </td>
+      <td>CPython 3.5.2 </td>
+      <td colspan="2">Darwin-16.7.0-x86_64-i386-64bit</td>
+    </tr>
+    <tr>
+      <th>TOTAL</th>
+      <th>SUCCESS</th>
+      <th>FAILED</th>
+      <th>ERROR</th>
+      <th>SKIPPED</th>
+      <!-- <th>ExpectedFailure</th>
+      <th>UnexpectedSuccess</th> -->
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <!-- <td>0</td>
+      <td>0</td> -->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+  <table id="details">
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+    
+      <tr id="record_1">
+        <th class="success" style="width:5em;">success</td>
+        <td>/order/buyer/orderAndRefundDetails</td>
+        <td style="text-align:center;width:6em;">215.99 ms</td>
+        <td class="detail">
+
+          <a class="button" href="#popup_log_1">log</a>
+          <div id="popup_log_1" class="overlay">
+            <div class="popup">
+              <h2>Request and Response data</h2>
+              <a class="close" href="#record_1">&times;</a>
+
+              <div class="content">
+                <h3>Request:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>url</th>
+                      <td>http://order-yijian-preview.yy.com/order/buyer/orderAndRefundDetails?token=boIBzDCCAcigAwIBBaEDAgEOogcDBQAAAAAAo4IBNWGCATEwggEtoAMCAQWhERsPeXkuY29tAAAEAAGAoH1AohEwD6ADAgEBoQgwBhsENTA2MKOB%252FzCB%252FKAEAgIBFaEDAgECooHuBIHrKAHg2CgB4Nhvs%252BbBnuGPJ2YaefnRmINouoS79vClmEq6302l54dp3AxT0gootUXCUj67SN3NIQkBDj3fZc%252BjMaEAh9ZgRj5jISlmybW2IBzS9zWCSIiHkmVhZsFyaG2dz2kzS8jjdbpbwP%252BJ9KTpVdKPNI1T2%252Byiw%252BOogKh0cveyjDNjKVLjYFlX4R8H2%252BLZQ0YH2Sr%252Fozezf7Rqq%252FszzVVGviDFA68WYBWYViDRc%252BXokFnV54dpYhjPTk4Lyq5Cl25IUY3kMZKZ3xbSk2mM4OU3GY65k1owMasgHP%252BzmNDm86xMCOOBmPAAAKR6MHigAwIBEaJxBG8CJRujSiN02kCOy4A4l0Dnv191QoaMD4XerRtLC8d03DWgG5pFG2JJ7%252Bp%252BtC%252B2nyA7MH5qDytiZaW3kzjLaTflsfrlMPK1fepbnhqnm%252FrTqgLr3Oha0kI2HNNxh5PFN4djTvSAYA8ZAoWvIX5d8Nw%253D&orderSeq=OP857880324996665344</td>
+                    </tr>
+                    <tr>
+                      <th>method</th>
+                      <td>GET</td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                        <div>
+                          <strong>Connection</strong>: keep-alive
+                        </div>
+                        
+                        <div>
+                          <strong>user-agent</strong>: Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Yijian/2.5.0-SNAPSHOT Environment/Preview NetType/wifi UserMode/Registered
+                        </div>
+                        
+                        <div>
+                          <strong>Accept-Encoding</strong>: gzip, deflate
+                        </div>
+                        
+                        <div>
+                          <strong>Accept</strong>: */*
+                        </div>
+                        
+                        <div>
+                          <strong>x-requested-with</strong>: com.yy.onepiece
+                        </div>
+                        
+                        <div>
+                          <strong>content-type</strong>: application/json;charset=utf-8
+                        </div>
+                        
+                      </td>
+                    </tr>
+                    
+
+                  </table>
+                </div>
+
+                <h3>Response:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                      <th>status_code</th>
+                      <td>
+                        200
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                          
+                          <div>
+                            <strong>Server</strong>: nginx
+                          </div>
+                          
+                          <div>
+                            <strong>Date</strong>: Tue, 21 Aug 2018 17:28:22 GMT
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Type</strong>: application/json;charset=UTF-8
+                          </div>
+                          
+                          <div>
+                            <strong>Transfer-Encoding</strong>: chunked
+                          </div>
+                          
+                          <div>
+                            <strong>Connection</strong>: keep-alive
+                          </div>
+                          
+                          <div>
+                            <strong>Access-Control-Allow-Origin</strong>: http://yijian-preview.yy.com
+                          </div>
+                          
+                          <div>
+                            <strong>Access-Control-Allow-Credentials</strong>: true
+                          </div>
+                          
+                          <div>
+                            <strong>Access-Control-Allow-Methods</strong>: GET, POST, PUT, DELETE, OPTIONS
+                          </div>
+                          
+                          <div>
+                            <strong>Access-Control-Allow-Headers</strong>: w-os,w-os-version,w-network,Origin,X-Requested-With,Content-Type,Accept,w-imei,Remote-Ip,User-Agent,HOST,X-Real-IP,X-Forwarded-For,Connection,Cookie,X-LVS-Real-IP,w_imei
+                          </div>
+                          
+                          <div>
+                            <strong>Content-Encoding</strong>: gzip
+                          </div>
+                          
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>body</th>
+                      <td>
+                        
+                          <pre>{
+  "data": {
+    "platform": false,
+    "orderRefundRecordVoList": [],
+    "restAmount": 1,
+    "orderDetail": {
+      "skuSeq": "PS857880324921167873",
+      "productPrice": 1,
+      "newestExpressDetailInfo": null,
+      "couponInfo": [],
+      "productSeq": "PD857880324921167872",
+      "productSumAmount": 1,
+      "finishTime": null,
+      "orderTime": 1534862717000,
+      "buyerRemark": null,
+      "orderSeq": "OP857880324996665344",
+      "payType": null,
+      "certificateAmount": 2200,
+      "salesmanAmount": 0,
+      "certificateType": 3,
+      "orderAmount": 1,
+      "couponSumAmount": 0,
+      "refundPolicy": 100,
+      "refundDetailDesc": null,
+      "refundId": null,
+      "salesmanRealAmount": 0,
+      "receiverMobile": "15525541555",
+      "refundType": null,
+      "certificateId": 109,
+      "buyerInfo": {
+        "avator": "",
+        "oldNickName": null,
+        "yyUid": "2158001472",
+        "sign": "",
+        "imid": "2158001472",
+        "passport": "overflowint1472",
+        "nickname": "overflowint1472"
+      },
+      "orderPrice": 1,
+      "planSeq": null,
+      "payAmount": 1,
+      "orderName": "图急急急",
+      "estAutoTranlateTime": null,
+      "sellerInfo": {
+        "avator": "http://downhdlogo.yy.com/hdlogo/640640/640/640/55/1688554168/u1688554168yCviLmb.jpg",
+        "oldNickName": null,
+        "yyUid": "1688554168",
+        "sign": "哈哈哈哈哈哈哈哈哈哈哈哈哈哈那就好哈哈哈",
+        "imid": "1924206805",
+        "passport": "test211213",
+        "nickname": "mitsuthebeats213"
+      },
+      "receiverName": "可口可樂了",
+      "payTime": null,
+      "refundApplyTime": null,
+      "orderType": 1,
+      "receiveArea": "河南省北京市",
+      "salesmanPercent": 0,
+      "addressId": 1278,
+      "expressTime": null,
+      "orderPic": "http://screenshot.dwstatic.com/yjmf/1534862657462_cover4609227021534862649739.jpg",
+      "remark": "",
+      "refundDes": null,
+      "expressFee": 0,
+      "evaluation": 1,
+      "orderRestTime": null,
+      "selectedCertificate": false,
+      "receiveAddress": "瀘州老窖",
+      "orderStatus": 702,
+      "paySn": null,
+      "productNum": 1,
+      "salesmanInfo": null
+    },
+    "orderRefundDetail": null,
+    "logistics": false
+  },
+  "code": null,
+  "success": true,
+  "msg": null
+}</pre>
+                        
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <h3>Statistics:</h3>
+                <div style="overflow: auto">
+                  <table>
+                    <tr>
+                        <th>content_size(bytes)</th>
+                        <td>1707</td>
+                      </tr>
+                    <tr>
+                      <th>response_time(ms)</th>
+                      <td>215.99</td>
+                    </tr>
+                    <tr>
+                      <th>elapsed(ms)</th>
+                      <td>205.421</td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          
+
+        </td>
+      </tr>
+    
+  </table>
+</body>
